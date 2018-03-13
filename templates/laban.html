@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <!-- Page Content
+    ================================================== -->
+    <div class="row">
+
+        <!-- Gallery Items
+        ================================================== -->
+        <div class="span12 gallery">
+
+            <div class="row clearfix">
+                <ul class="gallery-post-grid holder">
+                    {% for obj in bands %}
+                    <a href="{% url 'latestband' id=obj.id %}">
+                        <li  class="span3 gallery-item" data-id="id-1" data-type="illustration">
+                            <span class="gallery-hover-4col hidden-phone hidden-tablet"></span>
+                            <a><img src="{% static 'img/gallery/gallery-img-1-4col.jpg' %}" alt="Gallery"></a>
+                            <span class="project-details"><a href="{% url 'latestband' id=obj.id %}">{{obj.name}}</a>{{obj.brief|truncatechars:60}}</span>
+                        </li>
+                    </a>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if bands.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ bands.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ bands.number }} of {{ bands.paginator.num_pages }}.
+                    </span>
+
+                    {% if bands.has_next %}
+                        <a href="?page={{ bands.next_page_number }}">next</a>
+                        <a href="?page={{ bands.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+        </div><!-- End gallery list-->
+
+    </div><!-- End container row -->
+
+    </div> <!-- End Container -->
+{% endblock content %}

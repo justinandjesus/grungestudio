@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <!-- Page Content
+    ================================================== --> 
+    <div class="row">
+
+        <!-- Gallery Items
+        ================================================== --> 
+        <div class="span12 gallery-single">
+            <div class="span5 albumleft">
+                    <h2>{{obj.name}}</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/UKtCYkYPlwk?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <img src="{% static 'img/gallery/gallery-img-1-3col.jpg' %}" class="align-left thumbnail" alt="image">
+                </div>
+            <div class="span6 overarch_album row">
+
+                <div class="span12">
+                    <p class="lead">{{obj.brief}}</p>
+
+                    <ul class="project-info">
+                        <li><h6>Rating:</h6> {{obj.rating}}/5 </li>
+                        <!--<li><h6>Client:</h6> John Doe, Inc.</li>-->
+                        <!--<li><h6>Services:</h6> Design, Illustration</li>-->
+                        <!--<li><h6>Art Director:</h6> Jane Doe</li>-->
+                        <!--<li><h6>Designer:</h6> Jimmy Doe</li>-->
+                    </ul>
+                </div>
+            </div>
+
+        </div><!-- End gallery-single-->
+
+    </div><!-- End container row -->
+    
+    </div> <!-- End Container -->
+
+{% endblock content %}
